@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brahmi Script Converter — Devanagari to Brahmi Transliteration &amp; Keyboard</title>
+<meta name="description" content="Free online tool to convert Devanagari to Brahmi script and back, instantly. Type on a Brahmi keyboard, learn the ancient script of Ashoka's edicts, and practice reading with classic Hindi stories.">
+<meta name="keywords" content="brahmi script, brahmi converter, devanagari to brahmi, brahmi keyboard, brahmi transliteration, ancient indian script, ashoka brahmi, learn brahmi script, unicode brahmi">
+<meta name="author" content="Your Name">
+<link rel="canonical" href="https://prateek.is-a.dev/Brahmi">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="language" content="English, Hindi">
+<meta name="theme-color" content="#241C15">
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brahmi Script Converter — Devanagari ⇄ Brahmi Transliteration">
+<meta property="og:description" content="Convert Devanagari to Brahmi script in real time, type on an on-screen Brahmi keyboard, and practice reading India's oldest script through classic Hindi tales.">
+<meta property="og:url" content="https://prateek.is-a.dev/Brahmi">
+<meta property="og:site_name" content="Brāhmī — Devanagari to Brahmi Tool">
+<meta property="og:image" content="https://prateek.is-a.dev/Brahmi/background.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brahmi Script Converter — Devanagari ⇄ Brahmi">
+<meta name="twitter:description" content="Convert Devanagari to Brahmi script instantly, type on a Brahmi keyboard, and learn the script of Ashoka's edicts.">
+<meta name="twitter:image" content="https://prateek.is-a.dev/Brahmi/background.jpg">
+
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon180x180.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon180x180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./favicon180x180.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Brahmi Script Converter",
+  "url": "https://prateek.is-a.dev/Brahmi",
+  "description": "Free online tool to convert between Devanagari and Brahmi script, with an on-screen Brahmi keyboard and reading practice from classic Hindi stories.",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "inLanguage": ["en", "hi"],
+  "about": {
+    "@type": "Thing",
+    "name": "Brahmi script",
+    "sameAs": "https://en.wikipedia.org/wiki/Brahmi_script"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  @font-face{
+    font-family: 'Noto Sans Brahmi';
+    src: url('https://cdn.jsdelivr.net/gh/googlefonts/noto-fonts@main/hinted/ttf/NotoSansBrahmi/NotoSansBrahmi-Regular.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  :root{
+    --ink:#241C15;
+    --stone:#161210;
+    --stone-2:#221B16;
+    --sand:#E8DEC5;
+    --sand-deep:#D8C79E;
+    --cream:#F8F2E1;
+    --oxide:#A23F2A;
+    --oxide-dark:#7C2F20;
+    --patina:#5C7A67;
+    --gold:#B4872E;
+    --line: rgba(36,28,21,.16);
+    --shadow: 0 14px 34px rgba(20,15,11,.28);
+    --shadow-sm: 0 4px 12px rgba(20,15,11,.18);
+    --radius: 6px;
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Spectral', Georgia, serif;
+    --font-dev: 'Noto Serif Devanagari', serif;
+    --font-dev-sans: 'Noto Sans Devanagari', sans-serif;
+    --font-brahmi: 'Noto Sans Brahmi', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(178,139,60,.05), transparent 40%),
+      repeating-linear-gradient(115deg, rgba(36,28,21,.025) 0px, rgba(36,28,21,.025) 1px, transparent 1px, transparent 5px),
+      var(--sand);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:var(--stone);}
+
+  a{color:var(--oxide-dark);}
+  a:hover{color:var(--oxide);}
+
+  button{font-family:inherit;cursor:pointer;}
+  button:focus-visible, textarea:focus-visible, [contenteditable]:focus-visible, .word:focus-visible{
+    outline:3px solid var(--patina); outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px 26px;
+    background:
+      linear-gradient(180deg, rgba(18,14,11,.45) 0%, rgba(18,14,11,.72) 60%, var(--stone) 100%),
+      url('./background.jpg') center 30%/cover no-repeat;
+    color:var(--cream);
+  }
+  .hero .eyebrow{
+    font-family:var(--font-display);
+    letter-spacing:.28em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:12px;
+    animation:fadeDown .9s ease both;
+  }
+  .hero h1{
+    margin:0;
+    font-family:var(--font-dev);
+    font-weight:700;
+    font-size:clamp(38px,7vw,64px);
+    line-height:1;
+    text-shadow:0 6px 24px rgba(0,0,0,.4);
+    animation:fadeUp 1s .1s ease both;
+  }
+  .hero .translit{
+    font-family:var(--font-display);
+    letter-spacing:.18em;
+    font-size:clamp(12px,1.6vw,16px);
+    color:var(--sand-deep);
+    margin-top:8px;
+    animation:fadeUp 1s .2s ease both;
+  }
+  .hero p{
+    max-width:560px;
+    margin:14px auto 0;
+    font-size:15px;
+    color:rgba(248,242,225,.86);
+    animation:fadeUp 1s .3s ease both;
+  }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+  @keyframes fadeDown{from{opacity:0; transform:translateY(-10px)} to{opacity:1; transform:none}}
+
+  /* ---------- TAB NAV ---------- */
+  .tab-nav{
+    position:sticky; top:0; z-index:40;
+    background:var(--stone);
+    border-bottom:1px solid rgba(184,138,46,.25);
+    display:flex;
+    justify-content:center;
+    box-shadow:var(--shadow-sm);
+  }
+  .tab-nav__inner{
+    display:flex;
+    max-width:900px;
+    width:100%;
+    overflow-x:auto;
+  }
+  .tab-btn{
+    flex:1 1 0;
+    background:transparent;
+    border:none;
+    color:rgba(232,222,197,.62);
+    font-family:var(--font-display);
+    font-size:13px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:16px 10px 13px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+    border-bottom:3px solid transparent;
+    transition:color .2s, border-color .2s, background .2s;
+  }
+  .tab-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;}
+  .tab-btn:hover{color:var(--sand-deep); background:rgba(255,255,255,.03);}
+  .tab-btn[aria-selected="true"]{color:var(--gold); border-bottom-color:var(--oxide);}
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:1000px;margin:0 auto;padding:44px 20px 100px;}
+  .panel{display:none; animation:fadeIn .5s ease both;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .section-head{text-align:center;margin-bottom:34px;}
+  .section-head .kicker{
+    font-family:var(--font-display);
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--oxide-dark);
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,36px);
+    margin:8px 0 6px;
+    color:var(--ink);
+  }
+  .section-head p{color:#5a4f3f;max-width:560px;margin:0 auto;font-size:15px;}
+
+  /* ---------- CARD ---------- */
+  .card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+  }
+
+  /* ---------- TRANSLITERATION TAB ---------- */
+  .translit-grid{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:14px;
+    align-items:stretch;
+  }
+  .lang-box{display:flex;flex-direction:column;}
+  .lang-box__label{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-display);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--oxide-dark);
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .lang-box__label small{font-family:var(--font-body);font-style:italic;letter-spacing:0;text-transform:none;color:#8a7c62;}
+  .lang-box textarea, .lang-box .output{
+    width:100%; min-height:230px; resize:vertical;
+    border:none; background:transparent;
+    padding:18px 16px; font-size:24px; line-height:1.7;
+    color:var(--ink);
+  }
+  .lang-box textarea:focus{outline:none;}
+  .lang-box .output{white-space:pre-wrap; word-break:break-word; overflow-y:auto;}
+
+  .swap-col{display:flex;align-items:center;justify-content:center;}
+  .swap-btn{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--stone);
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow-sm);
+    transition:transform .5s cubic-bezier(.2,.9,.3,1.2), box-shadow .2s;
+  }
+  .swap-btn:hover{box-shadow:0 0 0 6px rgba(180,135,46,.15);}
+  .swap-btn svg{width:26px;height:26px;}
+  .swap-btn.spun{transform:rotate(180deg);}
+
+  .mini-kb-toggle{
+    font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    background:var(--sand-deep); border:1px solid var(--line); border-radius:20px;
+    padding:5px 12px; color:var(--ink); font-family:var(--font-body);
+  }
+  .mini-kb-toggle:hover{background:var(--gold); color:var(--cream);}
+  .mini-kb{display:none; border-top:1px solid var(--line); padding:14px;}
+  .mini-kb.open{display:block;}
+
+  /* ---------- COPY BUTTON ---------- */
+  .label-actions{display:flex; align-items:center; gap:8px;}
+  .copy-btn{
+    width:26px; height:26px; border-radius:50%; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    background:transparent; border:1px solid var(--line); color:var(--oxide-dark);
+    transition:background .15s, color .15s, border-color .15s;
+    font-size:12px; line-height:1;
+  }
+  .copy-btn svg{width:14px; height:14px;}
+  .copy-btn:hover{background:var(--oxide); color:var(--cream); border-color:var(--oxide);}
+  .copy-btn.copied{background:var(--patina); color:var(--cream); border-color:var(--patina);}
+  .copy-wrap{position:relative;}
+  .copy-btn--floating{
+    position:absolute; top:10px; right:12px; z-index:3;
+    background:var(--cream); box-shadow:var(--shadow-sm);
+  }
+  .kb-subhead{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-display); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--oxide-dark); padding:10px 16px; border-bottom:1px solid var(--line);
+  }
+
+  @media (max-width:760px){
+    .translit-grid{grid-template-columns:1fr;}
+    .swap-col{padding:2px 0;}
+    .swap-btn.spun{transform:rotate(90deg);}
+  }
+
+  /* ---------- KEYBOARD TAB ---------- */
+  .kb-textarea{
+    width:100%; min-height:130px; border:none; background:transparent;
+    padding:18px 20px; font-size:28px; line-height:1.8; color:var(--ink); resize:vertical;
+  }
+  .kb-textarea:focus{outline:none;}
+  .kb-preview{
+    padding:14px 20px; font-family:var(--font-dev); font-size:19px; color:#6b5f4c; min-height:30px;
+  max-height: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  }
+
+  .keyboard-panel{
+    margin-top:22px;
+    background:var(--sand-deep);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:12px 10px;
+    box-shadow:var(--shadow-sm);
+  }
+  .kb-group{margin-bottom:8px;}
+  .kb-group:last-child{margin-bottom:0;}
+  .kb-group h3{
+    font-family:var(--font-display); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--oxide-dark); margin:0 0 6px 2px; opacity:.8;
+  }
+  .kb-keys{display:grid; grid-template-columns:repeat(auto-fill, minmax(38px,1fr)); gap:6px;}
+  .kb-key{
+    background:var(--cream); border:1px solid var(--line); border-radius:8px;
+    aspect-ratio:1/1; padding:3px 2px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+    box-shadow:0 2px 0 rgba(36,28,21,.18);
+    transition:transform .08s ease, background .15s;
+  }
+  .kb-key .glyph{font-family:var(--font-brahmi); font-size:19px; line-height:1;}
+  .kb-key .roman{font-family:var(--font-dev); font-size:10px; color:#5a4f3f;}
+  .kb-key:hover{background:#fff;}
+  .kb-key:active{transform:translateY(2px); box-shadow:none;}
+
+  .kb-toolbar{display:flex; gap:6px; margin-top:8px; padding-top:8px; border-top:1px solid rgba(36,28,21,.12);}
+  .kb-toolbar button{
+    border:1px solid var(--line); border-radius:8px; font-family:var(--font-display);
+    font-size:13px; letter-spacing:.03em; background:var(--cream); color:var(--ink);
+    box-shadow:0 2px 0 rgba(36,28,21,.18); transition:background .15s, color .15s;
+    padding:10px 8px;
+  }
+  .kb-toolbar button:active{transform:translateY(2px); box-shadow:none;}
+  .kb-tool-clear{flex:0 0 auto; font-size:11px; color:var(--oxide-dark); padding:10px 12px;}
+  .kb-tool-mark{flex:0 0 auto; width:46px;}
+  .kb-tool-space{flex:1 1 auto;}
+  .kb-tool-back{flex:0 0 auto; padding:10px 18px; background:var(--oxide); color:var(--cream); border-color:var(--oxide-dark);}
+  .kb-tool-back:hover{background:var(--oxide-dark);}
+
+  /* ---------- PRACTICE TAB ---------- */
+  .practice-toolbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-bottom:16px; flex-wrap:wrap;
+  }
+  .story-meta{font-family:var(--font-display); font-size:13px; letter-spacing:.06em; color:var(--oxide-dark);}
+  .story-meta .story-title{display:block; font-family:var(--font-dev); font-size:20px; color:var(--ink); letter-spacing:0; margin-top:2px;}
+  .shuffle-btn{
+    display:flex; align-items:center; gap:8px;
+    background:var(--stone); color:var(--cream); border:1px solid var(--gold);
+    padding:10px 18px; border-radius:22px; font-family:var(--font-display); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .shuffle-btn:hover{background:var(--oxide);}
+  .shuffle-btn svg{width:16px;height:16px; transition:transform .5s;}
+  .shuffle-btn:active svg{transform:rotate(180deg);}
+
+  .practice-stack{display:flex; flex-direction:column; gap:14px;}
+  .pp-box__label{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-display); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--oxide-dark); padding:12px 16px; border-bottom:1px solid var(--line);
+  }
+  .pp-editable{
+    padding:20px; font-family:var(--font-dev); font-size:23px; line-height:2;
+    min-height:160px; color:var(--ink);
+  }
+  .pp-editable:focus{outline:none; background:rgba(180,135,46,.04);}
+  .pp-brahmi{
+    padding:20px; font-family:var(--font-brahmi); font-size:24px; line-height:2.1;
+    min-height:160px; color:var(--oxide-dark);
+  }
+  .word{cursor:pointer; border-radius:3px; padding:0 2px; transition:background .15s, color .15s;}
+  .word:hover{background:rgba(180,135,46,.22);}
+  .word.active{background:var(--gold); color:var(--cream);}
+
+  /* ---------- ABOUT TAB ---------- */
+  .about-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:26px; align-items:start;}
+  .about-grid img{width:100%; border-radius:var(--radius); box-shadow:var(--shadow-sm); display:block;}
+  .about-card{padding:26px 28px;}
+  .about-card h3{font-family:var(--font-display); font-size:17px; margin:22px 0 8px; color:var(--oxide-dark);}
+  .about-card h3:first-child{margin-top:0;}
+  .about-card p{font-size:15px; color:#4a4030;}
+  .credit-row{
+    display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;
+  }
+  .credit-row a{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--stone); color:var(--cream); padding:9px 16px; border-radius:20px;
+    font-size:13px; text-decoration:none; border:1px solid var(--gold);
+  }
+  .credit-row a:hover{background:var(--oxide); color:var(--cream);}
+  .credit-row svg{width:15px;height:15px;fill:currentColor;}
+  figure{margin:0 0 18px;}
+  figcaption{font-size:12px; color:#8a7c62; margin-top:6px; text-align:center; font-style:italic;}
+
+  @media (max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  footer{
+    text-align:center; padding:30px 20px 46px; color:#8a7c62; font-size:13px;
+    font-family:var(--font-display); letter-spacing:.04em;
+  }
+
+  /* ---------- RESPONSIVE PASS ---------- */
+  @media (max-width:900px){
+    main{padding:34px 16px 80px;}
+    .translit-grid{gap:10px;}
+    .lang-box textarea, .lang-box .output{font-size:20px; min-height:190px; padding:16px 14px;}
+    .kb-textarea{font-size:24px;}
+    .pp-editable, .pp-brahmi{font-size:20px; padding:16px;}
+  }
+
+  @media (max-width:760px){
+    .tab-btn{font-size:11px; padding:13px 6px 10px; gap:4px;}
+    .tab-btn svg{width:17px;height:17px;}
+  }
+
+  @media (max-width:600px){
+    .hero{padding:30px 16px 20px;}
+    .hero p{font-size:14px;}
+    .section-head{margin-bottom:24px;}
+    .section-head h2{font-size:22px;}
+    .section-head p{font-size:14px;}
+    .lang-box__label{padding:10px 12px; font-size:11px;}
+    .lang-box textarea, .lang-box .output{font-size:18px; min-height:160px; padding:14px 12px;}
+    .swap-btn{width:44px;height:44px;}
+    .swap-btn svg{width:22px;height:22px;}
+    .kb-textarea{font-size:20px; min-height:120px; padding:14px 16px;}
+    .kb-preview{font-size:16px; padding:10px 16px;}
+    .keyboard-panel{padding:8px 6px;}
+    .kb-keys{grid-template-columns:repeat(auto-fill, minmax(30px,1fr)); gap:4px;}
+    .kb-key .glyph{font-size:16px;}
+    .kb-key .roman{font-size:9px;}
+    .kb-toolbar button{padding:8px 6px; font-size:12px;}
+    .practice-toolbar{flex-direction:column; align-items:flex-start;}
+    .pp-editable, .pp-brahmi{font-size:18px; line-height:1.9; padding:14px;}
+    .about-card{padding:20px 18px;}
+    .credit-row a{font-size:12px; padding:8px 14px;}
+  }
+
+  @media (max-width:420px){
+    .hero h1{font-size:34px;}
+    .tab-nav__inner{justify-content:flex-start;}
+    .tab-btn{flex:0 0 auto; min-width:78px;}
+    .kb-keys{grid-template-columns:repeat(auto-fill, minmax(26px,1fr));}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Prāchīn Bhārat kī Lipi · Script of Ancient India</div>
+  <h1>ब्राह्मी</h1>
+  <div class="translit">B R Ā H M Ī</div>
+  <p>देवनागरी और ब्राह्मी लिपि के बीच तुरंत लिप्यंतरण करें, ब्राह्मी कीबोर्ड पर टाइप करना सीखें, और प्राचीन कहानियों से अभ्यास करें।</p>
+</header>
+
+<nav class="tab-nav">
+  <div class="tab-nav__inner" role="tablist" aria-label="Sections">
+    <button class="tab-btn" data-tab="translit" role="tab" aria-selected="true">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 6h9M4 6l3-3M4 6l3 3M20 18h-9m9 0l-3-3m3 3l-3 3M9 3v18M15 3v18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Transliterate
+    </button>
+    <button class="tab-btn" data-tab="keyboard" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M18 14h.01M9 14h6" stroke-linecap="round"/></svg>
+      Keyboard
+    </button>
+    <button class="tab-btn" data-tab="practice" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H14v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H14v16h4.5c.8 0 1.5-.7 1.5-1.5v-13Z"/></svg>
+      Practice
+    </button>
+    <button class="tab-btn" data-tab="about" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1" stroke-linecap="round"/></svg>
+      About
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ TRANSLITERATION TAB ============ -->
+  <section class="panel active" id="panel-translit">
+    <div class="section-head">
+      <div class="kicker">Live Transliteration</div>
+      <h2>टाइप करें, तुरंत परिवर्तित हों</h2>
+      <p>Type in one script and watch it convert in real time — just like a translator, but between Devanagari and its ancient ancestor.</p>
+    </div>
+
+    <div class="translit-grid">
+      <div class="lang-box card" id="box-left">
+        <div class="lang-box__label">
+          <span id="label-left">देवनागरी · Devanagari</span>
+          <span class="label-actions">
+            <small id="hint-left">type freely</small>
+            <button class="copy-btn" data-copy="input-left" type="button" title="Copy" aria-label="Copy text">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </span>
+        </div>
+        <textarea id="input-left" placeholder="यहाँ हिन्दी में लिखें…" style="font-family:var(--font-dev)"></textarea>
+        <div class="mini-kb" id="mini-kb-wrap">
+          <button class="mini-kb-toggle" id="mini-kb-toggle" type="button">⌨ Brahmi keyboard</button>
+          <div class="keyboard-panel" id="mini-kb-panel" style="display:none;margin-top:10px;">
+            <div id="mini-kb-body"></div>
+            <div class="kb-toolbar" id="mini-kb-toolbar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swap-col">
+        <button class="swap-btn" id="swap-btn" title="Swap languages" aria-label="Swap languages">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="17" stroke="#E8DEC5" stroke-width="1.4"/>
+            <g stroke="#E8DEC5" stroke-width="1.4">
+              <path d="M20 3v34M3 20h34M8 8l24 24M32 8L8 32"/>
+            </g>
+            <circle cx="20" cy="20" r="3" fill="#B4872E"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="lang-box card" id="box-right">
+        <div class="lang-box__label">
+          <span id="label-right">ब्राह्मी · Brahmi</span>
+          <span class="label-actions">
+            <small>read only</small>
+            <button class="copy-btn" data-copy="output-right" type="button" title="Copy" aria-label="Copy text">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </span>
+        </div>
+        <div class="output" id="output-right" style="font-family:var(--font-brahmi)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KEYBOARD TAB ============ -->
+  <section class="panel" id="panel-keyboard">
+    <div class="section-head">
+      <div class="kicker">Type in Script</div>
+      <h2>ब्राह्मी कीबोर्ड</h2>
+      <p>Tap the ancient letters to compose text, one akshara at a time — just like the scribes who cut these signs into stone.</p>
+    </div>
+
+    <div class="card">
+      <div class="kb-subhead">
+        <span>ब्राह्मी · type here</span>
+        <button class="copy-btn" data-copy="kb-textarea" type="button" title="Copy" aria-label="Copy Brahmi text">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <textarea class="kb-textarea" id="kb-textarea" placeholder="नीचे कीबोर्ड से टाइप करें…" style="font-family:var(--font-brahmi)"></textarea>
+      <div class="kb-subhead">
+        <span>देवनागरी · live preview</span>
+        <button class="copy-btn" data-copy="kb-preview-label" type="button" title="Copy" aria-label="Copy Devanagari text">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="kb-preview" id="kb-preview-label">देवनागरी लिप्यंतरण यहाँ दिखेगा…</div>
+    </div>
+
+    <div class="keyboard-panel">
+      <div class="keyboard" id="keyboard-full"></div>
+      <div class="kb-toolbar" id="kb-toolbar"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE TAB ============ -->
+  <section class="panel" id="panel-practice">
+    <div class="section-head">
+      <div class="kicker">Read &amp; Recognize</div>
+      <h2>अभ्यास करें</h2>
+      <p>Read classic Hindi tales in Devanagari, watch them mirrored in Brahmi below, and click any word to see it highlighted in both scripts.</p>
+    </div>
+
+    <div class="practice-toolbar">
+      <div class="story-meta">Story <span id="story-count">1 / 10</span><span class="story-title" id="story-title">—</span></div>
+      <button class="shuffle-btn" id="shuffle-btn" type="button">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 7h4l6 10h6M4 17h4l2.5-4M16 7h4M16 7l-2-2M16 7l-2 2M20 17l-2-2M20 17l-2 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Shuffle
+      </button>
+    </div>
+
+    <div class="practice-stack">
+      <div class="card">
+        <div class="pp-box__label">
+          <span>देवनागरी · edit or click a word</span>
+          <button class="copy-btn" data-copy="pp-dev" type="button" title="Copy" aria-label="Copy Devanagari text">
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="pp-editable" id="pp-dev" contenteditable="true" spellcheck="false"></div>
+      </div>
+      <div class="card">
+        <div class="pp-box__label">
+          <span>ब्राह्मी · mirrors the text above</span>
+          <button class="copy-btn" data-copy="pp-brahmi" type="button" title="Copy" aria-label="Copy Brahmi text">
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="pp-brahmi" id="pp-brahmi"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT TAB ============ -->
+  <section class="panel" id="panel-about">
+    <div class="section-head">
+      <div class="kicker">The Script</div>
+      <h2>ब्राह्मी लिपि के बारे में</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card card">
+        <h3>Brahmi, the mother script</h3>
+        <p>Brahmi is among the oldest writing systems of the Indian subcontinent, in documented use from roughly the 7th century BCE through the 5th century CE. It rose to lasting fame as the script of Emperor Ashoka's 3rd-century BCE stone edicts, carved onto pillars and rock faces across his empire to spread messages of dharma. Nearly every major script used across South and Southeast Asia today — Devanagari, Bengali, Tamil, Kannada, Thai, Tibetan, and many more — traces its lineage back to Brahmi.</p>
+        <h3>How this tool works</h3>
+        <p>Each Devanagari letter, vowel sign, numeral and punctuation mark is mapped to its corresponding character in the Unicode Brahmi block (U+11000–U+1107F), following the official Unicode character tables. Conversion happens character by character in your browser — nothing is sent to a server.</p>
+        <h3>Fonts &amp; references</h3>
+        <p>Brahmi glyphs render using Google's Noto Sans Brahmi font. Devanagari is set in Noto Serif Devanagari. For a deeper dive, see the <a href="https://www.unicode.org/charts/PDF/U11000.pdf" target="_blank" rel="noopener">Unicode Brahmi code chart</a> and the <a href="https://en.wikipedia.org/wiki/Brahmi_script" target="_blank" rel="noopener">Brahmi script entry on Wikipedia</a>.</p>
+        <h3>Project &amp; credits</h3>
+        <p>Built as an open web app for anyone curious about India's epigraphic heritage.</p>
+        <div class="credit-row">
+          <a href="https://github.com/prateek-chaubey/Brahmi" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub · prateek-chaubey/Brahmi
+          </a>
+        </div>
+        <p style="margin-top:14px;">Project &amp; author: <strong>Prateek Chaubey</strong></p>
+      </div>
+
+      <div>
+        <figure class="card" style="padding:14px;">
+          <img src="./ashokan_pillar.jpg" loading="lazy">
+          <figcaption>Brahmi inscription, Ashoka Pillar, Sarnath</figcaption>
+        </figure>
+        <figure class="card" style="padding:14px;">
+          <img src="./AshokaLions.jpg" loading="lazy">
+          <figcaption>Lion Capital of Ashoka, Sarnath — now India's national emblem</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© Brāhmī Lipi · A tribute to India's oldest deciphered script</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     1. TRANSLITERATION MAP  (Unicode Devanagari <-> Brahmi block)
+     ============================================================ */
+  const DEV2BRAHMI = {};
+  const BRAHMI2DEV = {};
+  function pair(dev, hex){
+    const b = String.fromCodePoint(parseInt(hex,16));
+    DEV2BRAHMI[dev] = b;
+    if(!(b in BRAHMI2DEV)) BRAHMI2DEV[b] = dev;
+  }
+
+  // signs
+  pair('ँ','11000'); pair('ं','11001'); pair('ः','11002');
+  // independent vowels
+  pair('अ','11005'); pair('आ','11006'); pair('इ','11007'); pair('ई','11008');
+  pair('उ','11009'); pair('ऊ','1100A'); pair('ऋ','1100B'); pair('ॠ','1100C');
+  pair('ऌ','1100D'); pair('ॡ','1100E'); pair('ए','1100F'); pair('ऐ','11010');
+  pair('ओ','11011'); pair('औ','11012');
+  // consonants
+  pair('क','11013'); pair('ख','11014'); pair('ग','11015'); pair('घ','11016'); pair('ङ','11017');
+  pair('च','11018'); pair('छ','11019'); pair('ज','1101A'); pair('झ','1101B'); pair('ञ','1101C');
+  pair('ट','1101D'); pair('ठ','1101E'); pair('ड','1101F'); pair('ढ','11020'); pair('ण','11021');
+  pair('त','11022'); pair('थ','11023'); pair('द','11024'); pair('ध','11025'); pair('न','11026');
+  pair('प','11027'); pair('फ','11028'); pair('ब','11029'); pair('भ','1102A'); pair('म','1102B');
+  pair('य','1102C'); pair('र','1102D'); pair('ल','1102E'); pair('व','1102F');
+  pair('श','11030'); pair('ष','11031'); pair('स','11032'); pair('ह','11033'); pair('ळ','11034');
+  // vowel signs (matras)
+  pair('ा','11038'); pair('ि','1103A'); pair('ी','1103B'); pair('ु','1103C'); pair('ू','1103D');
+  pair('ृ','1103E'); pair('ॄ','1103F'); pair('ॢ','11040'); pair('ॣ','11041');
+  pair('े','11042'); pair('ै','11043'); pair('ो','11044'); pair('ौ','11045');
+  pair('्','11046');
+  // punctuation
+  pair('।','11047'); pair('॥','11048');
+  // digits
+  pair('०','11066'); pair('१','11067'); pair('२','11068'); pair('३','11069'); pair('४','1106A');
+  pair('५','1106B'); pair('६','1106C'); pair('७','1106D'); pair('८','1106E'); pair('९','1106F');
+  // Devanagari nukta (़) has no Brahmi counterpart — drop it silently so it never
+  // shows up as a stray mark next to a converted letter (e.g. ड़ -> only 𑀟, no dot).
+  DEV2BRAHMI['\u093C'] = '';
+
+  function devanagariToBrahmi(text){
+    let out = Array.from(text).map(ch => DEV2BRAHMI[ch] !== undefined ? DEV2BRAHMI[ch] : ch).join('');
+    // Brahmi danda marks visually fuse with the previous letter in most
+    // fonts — add a plain space before them so they read as separate.
+    // No colour, no span, just a space.
+    out = out.replace(/([^\s\u{11047}\u{11048}])([\u{11047}\u{11048}]+)/gu, '$1 $2');
+    return out;
+  }
+  function brahmiToDevanagari(text){
+    return Array.from(text).map(ch => BRAHMI2DEV[ch] !== undefined ? BRAHMI2DEV[ch] : ch).join('');
+  }
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function copyToClipboard(text){
+    return new Promise((resolve)=>{
+      function fallback(){
+        try{
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          ta.style.top = '0';
+          document.body.appendChild(ta);
+          ta.focus(); ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }catch(e){}
+        resolve();
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(resolve).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
+
+  /* ============================================================
+     2. TAB SWITCHING
+     ============================================================ */
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = {
+    translit: document.getElementById('panel-translit'),
+    keyboard: document.getElementById('panel-keyboard'),
+    practice: document.getElementById('panel-practice'),
+    about: document.getElementById('panel-about'),
+  };
+  tabBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabBtns.forEach(b=>b.setAttribute('aria-selected','false'));
+      btn.setAttribute('aria-selected','true');
+      Object.values(panels).forEach(p=>p.classList.remove('active'));
+      panels[btn.dataset.tab].classList.add('active');
+    });
+  });
+
+  /* ============================================================
+     3. KEYBOARD BUILDER  (reused by full Keyboard tab + mini kb)
+     ============================================================ */
+  const VOWELS = ['अ','आ','इ','ई','उ','ऊ','ऋ','ॠ','ऌ','ॡ','ए','ऐ','ओ','औ'];
+  const CONSONANTS = ['क','ख','ग','घ','ङ','च','छ','ज','झ','ञ','ट','ठ','ड','ढ','ण','त','थ','द','ध','न','प','फ','ब','भ','म','य','र','ल','व','श','ष','स','ह','ळ'];
+  const MATRA_SIGNS = ['ा','ि','ी','ु','ू','ृ','ॄ','ॢ','ॣ','े','ै','ो','ौ'];
+  const OTHER_SIGNS = ['ं','ः','ँ','्'];
+  const NUMERALS = ['०','१','२','३','४','५','६','७','८','९'];
+
+  // Every insertion always happens at the END of the current text — never
+  // at a stale/mid cursor position — so keys can never land in the wrong
+  // spot when the textarea isn't focused.
+  function appendText(el, text){
+    el.value = el.value + text;
+    el.selectionStart = el.selectionEnd = el.value.length;
+    el.dispatchEvent(new Event('input'));
+  }
+  function backspaceOne(el){
+    if(el.value.length === 0) return;
+    el.value = el.value.slice(0, -1);
+    el.selectionStart = el.selectionEnd = el.value.length;
+    el.dispatchEvent(new Event('input'));
+  }
+
+  function makeKey(brahmiGlyph, devCaption, wide){
+    const key = document.createElement('button');
+    key.type = 'button';
+    key.className = 'kb-key' + (wide ? ' wide' : '');
+    key.innerHTML = '<span class="glyph">'+escapeHtml(brahmiGlyph)+'</span><span class="roman">'+escapeHtml(devCaption)+'</span>';
+    return key;
+  }
+
+  // Builds a full keyboard grid into `container`, inserting into `targetEl`.
+  // Returns a handle with .reset() to restore the vowel row to its default
+  // (independent-vowel) state — call this after any key that ends an akshara.
+  function buildKeyboard(container, targetEl, opts){
+    opts = opts || {};
+    container.innerHTML = '';
+    let mode = 'vowels';
+    let consonant = null;
+
+    // -- number row (fixed) --
+    const numGroup = document.createElement('div');
+    numGroup.className = 'kb-group';
+    numGroup.innerHTML = '<h3>अंक</h3>';
+    const numKeys = document.createElement('div');
+    numKeys.className = 'kb-keys';
+    NUMERALS.forEach(dev=>{
+      const brahmi = DEV2BRAHMI[dev] || '';
+      const key = makeKey(brahmi, dev);
+      key.addEventListener('click', ()=>{ appendText(targetEl, brahmi); reset(); if(opts.onChange) opts.onChange(); });
+      numKeys.appendChild(key);
+    });
+    numGroup.appendChild(numKeys);
+
+    // -- dynamic vowel / matra row --
+    const vowelGroup = document.createElement('div');
+    vowelGroup.className = 'kb-group';
+    const vowelHeading = document.createElement('h3');
+    const vowelKeys = document.createElement('div');
+    vowelKeys.className = 'kb-keys';
+    vowelGroup.appendChild(vowelHeading);
+    vowelGroup.appendChild(vowelKeys);
+
+    function renderVowelRow(){
+      vowelKeys.innerHTML = '';
+      if(mode === 'matras' && consonant){
+        vowelHeading.textContent = 'मात्रा · ' + consonant;
+        const baseBrahmi = DEV2BRAHMI[consonant] || '';
+        const baseKey = makeKey(baseBrahmi, consonant);
+        baseKey.addEventListener('click', ()=>{ reset(); if(opts.onChange) opts.onChange(); });
+        vowelKeys.appendChild(baseKey);
+        MATRA_SIGNS.forEach(m=>{
+          const brahmiMatra = DEV2BRAHMI[m] || '';
+          const comboDev = consonant + m;
+          const comboBrahmi = baseBrahmi + brahmiMatra;
+          const key = makeKey(comboBrahmi, comboDev);
+          key.addEventListener('click', ()=>{ appendText(targetEl, brahmiMatra); reset(); if(opts.onChange) opts.onChange(); });
+          vowelKeys.appendChild(key);
+        });
+      } else {
+        vowelHeading.textContent = 'स्वर';
+        VOWELS.forEach(v=>{
+          const brahmi = DEV2BRAHMI[v] || '';
+          const key = makeKey(brahmi, v);
+          key.addEventListener('click', ()=>{ appendText(targetEl, brahmi); reset(); if(opts.onChange) opts.onChange(); });
+          vowelKeys.appendChild(key);
+        });
+      }
+    }
+    function reset(){ mode = 'vowels'; consonant = null; renderVowelRow(); }
+    renderVowelRow();
+
+    // -- consonants (always visible) --
+    const consGroup = document.createElement('div');
+    consGroup.className = 'kb-group';
+    consGroup.innerHTML = '<h3>व्यंजन</h3>';
+    const consKeys = document.createElement('div');
+    consKeys.className = 'kb-keys';
+    CONSONANTS.forEach(c=>{
+      const brahmi = DEV2BRAHMI[c] || '';
+      const key = makeKey(brahmi, c);
+      key.addEventListener('click', ()=>{
+        appendText(targetEl, brahmi);
+        mode = 'matras'; consonant = c; renderVowelRow();
+        if(opts.onChange) opts.onChange();
+      });
+      consKeys.appendChild(key);
+    });
+    consGroup.appendChild(consKeys);
+
+    // -- other signs (anusvara, visarga, candrabindu, virama) --
+    const signGroup = document.createElement('div');
+    signGroup.className = 'kb-group';
+    signGroup.innerHTML = '<h3>अन्य चिह्न</h3>';
+    const signKeys = document.createElement('div');
+    signKeys.className = 'kb-keys';
+    OTHER_SIGNS.forEach(s=>{
+      const brahmi = DEV2BRAHMI[s] || '';
+      const key = makeKey(brahmi, s);
+      key.addEventListener('click', ()=>{ appendText(targetEl, brahmi); reset(); if(opts.onChange) opts.onChange(); });
+      signKeys.appendChild(key);
+    });
+    signGroup.appendChild(signKeys);
+
+    container.appendChild(numGroup);
+    container.appendChild(vowelGroup);
+    container.appendChild(consGroup);
+    container.appendChild(signGroup);
+
+    return { reset };
+  }
+
+  // Builds the Space / danda / double-danda / Backspace / Clear toolbar row
+  // shared by the full Keyboard tab and the inline mini-keyboard.
+  function appendDanda(el, dandaBrahmi){
+    const needsSpace = el.value.length > 0 && !/\s$/.test(el.value);
+    appendText(el, (needsSpace ? ' ' : '') + dandaBrahmi);
+  }
+
+  function buildKeyboardToolbar(container, targetEl, handle, opts){
+    opts = opts || {};
+    container.innerHTML = '';
+    const dandaBrahmi = DEV2BRAHMI['।'] || '';
+    const doubleDandaBrahmi = DEV2BRAHMI['॥'] || '';
+    const buttons = [
+      { label: 'साफ़', cls: 'kb-tool-clear', act: ()=>{ targetEl.value=''; targetEl.selectionStart=targetEl.selectionEnd=0; targetEl.dispatchEvent(new Event('input')); } },
+      { label: '।', cls: 'kb-tool-mark', act: ()=> appendDanda(targetEl, dandaBrahmi) },
+      { label: 'स्पेस', cls: 'kb-tool-space', act: ()=> appendText(targetEl, ' ') },
+      { label: '॥', cls: 'kb-tool-mark', act: ()=> appendDanda(targetEl, doubleDandaBrahmi) },
+      { label: '⌫', cls: 'kb-tool-back', act: ()=> backspaceOne(targetEl) },
+    ];
+    buttons.forEach(b=>{
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = b.cls;
+      btn.textContent = b.label;
+      btn.addEventListener('click', ()=>{
+        b.act();
+        if(handle) handle.reset();
+        if(opts.onChange) opts.onChange();
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  /* ---- Full keyboard tab ---- */
+  const kbTextarea = document.getElementById('kb-textarea');
+  const kbPreview = document.getElementById('kb-preview-label');
+  const kbFull = document.getElementById('keyboard-full');
+  const kbToolbarEl = document.getElementById('kb-toolbar');
+  const kbPlaceholder = 'देवनागरी लिप्यंतरण यहाँ दिखेगा…';
+  function updateKbPreview(){
+    const dev = brahmiToDevanagari(kbTextarea.value);
+    kbPreview.textContent = dev ? dev : kbPlaceholder;
+
+    kbPreview.scrollTo({
+      top: kbPreview.scrollHeight,
+      behavior: "smooth"
+    });
+
+       
+    kbTextarea.scrollTo({
+      top: kbTextarea.scrollHeight,
+      behavior: "smooth"
+    });               
+    
+  }
+  const kbHandle = buildKeyboard(kbFull, kbTextarea, { onChange: updateKbPreview });
+  buildKeyboardToolbar(kbToolbarEl, kbTextarea, kbHandle, { onChange: updateKbPreview });
+  kbTextarea.addEventListener('input', updateKbPreview);
+  updateKbPreview();
+
+  /* ============================================================
+     4. TRANSLITERATION TAB
+     ============================================================ */
+  let dir = 'd2b'; // d2b = devanagari->brahmi, b2d = brahmi->devanagari
+  const inputLeft = document.getElementById('input-left');
+  const outputRight = document.getElementById('output-right');
+  const labelLeft = document.getElementById('label-left');
+  const labelRight = document.getElementById('label-right');
+  const hintLeft = document.getElementById('hint-left');
+  const swapBtn = document.getElementById('swap-btn');
+  const miniKbWrap = document.getElementById('mini-kb-wrap');
+  const miniKbToggle = document.getElementById('mini-kb-toggle');
+  const miniKbPanel = document.getElementById('mini-kb-panel');
+  const miniKbBody = document.getElementById('mini-kb-body');
+  const miniKbToolbar = document.getElementById('mini-kb-toolbar');
+  let miniKbHandle = null;
+
+  function runConversion(){
+    const converted = (dir === 'd2b') ? devanagariToBrahmi(inputLeft.value) : brahmiToDevanagari(inputLeft.value);
+    outputRight.textContent = converted;
+  }
+  inputLeft.addEventListener('input', runConversion);
+
+  function applyDirectionUI(){
+    if(dir === 'd2b'){
+      labelLeft.textContent = 'देवनागरी · Devanagari';
+      labelRight.textContent = 'ब्राह्मी · Brahmi';
+      hintLeft.textContent = 'type freely';
+      inputLeft.style.fontFamily = "var(--font-dev)";
+      inputLeft.placeholder = 'यहाँ हिन्दी में लिखें…';
+      outputRight.style.fontFamily = "var(--font-brahmi)";
+      miniKbWrap.style.display = 'none';
+      miniKbPanel.style.display = 'none';
+    } else {
+      labelLeft.textContent = 'ब्राह्मी · Brahmi';
+      labelRight.textContent = 'देवनागरी · Devanagari';
+      hintLeft.textContent = 'use keyboard below';
+      inputLeft.style.fontFamily = "var(--font-brahmi)";
+      inputLeft.placeholder = 'नीचे ब्राह्मी कीबोर्ड से टाइप करें…';
+      outputRight.style.fontFamily = "var(--font-dev)";
+      miniKbWrap.style.display = 'block';
+    }
+    runConversion();
+  }
+
+  miniKbToggle.addEventListener('click', ()=>{
+    const open = miniKbPanel.style.display === 'block';
+    miniKbPanel.style.display = open ? 'none' : 'block';
+    if(!open && !miniKbBody.dataset.built){
+      miniKbHandle = buildKeyboard(miniKbBody, inputLeft, { onChange: runConversion });
+      buildKeyboardToolbar(miniKbToolbar, inputLeft, miniKbHandle, { onChange: runConversion });
+      miniKbBody.dataset.built = '1';
+    }
+  });
+
+  swapBtn.addEventListener('click', ()=>{
+    swapBtn.classList.toggle('spun');
+    dir = (dir === 'd2b') ? 'b2d' : 'd2b';
+    // swap the text content between the two boxes
+    const rightVal = outputRight.textContent;
+    inputLeft.value = rightVal;
+    applyDirectionUI();
+  });
+
+  applyDirectionUI();
+
+  /* ============================================================
+     4b. COPY BUTTONS
+     ============================================================ */
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    const targetId = btn.dataset.copy;
+    btn.addEventListener('click', ()=>{
+      const el = document.getElementById(targetId);
+      if(!el) return;
+      const text = ('value' in el) ? el.value : el.innerText;
+      if(!text || !text.trim()) return;
+      copyToClipboard(text).then(()=>{
+        const original = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '✓';
+        setTimeout(()=>{ btn.classList.remove('copied'); btn.innerHTML = original; }, 1200);
+      });
+    });
+  });
+
+  /* ============================================================
+     5. PRACTICE TAB  — stories + word-level alignment
+     ============================================================ */
+  const STORIES = [
+    { title: "लालची कुत्ता", text: "एक कुत्ते को एक हड्डी मिली। वह उसे मुँह में दबाकर नदी के सेतु से जा रहा था। पानी में उसने अपनी परछाईं देखी और सोचा कि वहाँ कोई दूसरा कुत्ता बड़ी हड्डी लिए खड़ा है। लालच में उसने भौंकने के लिए मुँह खोला और उसकी अपनी हड्डी पानी में गिर गई। इस तरह लालच के कारण उसे अपनी वास्तविक हड्डी भी गँवानी पड़ी।" },
+    { title: "प्यासा कौआ", text: "गर्मी के दिनों में एक कौआ बहुत प्यासा था। उसे एक घड़ा मिला जिसमें थोड़ा पानी नीचे था। उसकी चोंच पानी तक नहीं पहुँच पा रही थी। तभी उसे एक उपाय सूझा। उसने पास पड़े कंकड़ उठाए और एक-एक करके घड़े में डाले। धीरे-धीरे पानी ऊपर आया और कौए ने अपनी प्यास बुझाई। बुद्धि से बड़ी से बड़ी कठिनाई भी सुलझ जाती है।" },
+    { title: "खरगोश और कछुआ", text: "एक खरगोश को अपनी तेज चाल पर बहुत घमंड था। उसने कछुए की हँसी उड़ाते हुए उसे दौड़ की चुनौती दी। दौड़ आरंभ हुई और खरगोश बहुत आगे निकल गया। घमंड में उसने सोचा कि थोड़ी देर विश्राम कर लूँ, और वहीं पेड़ के नीचे सो गया। कछुआ धीरे-धीरे पर बिना रुके चलता रहा और अंततः पहले पहुँचकर विजयी हुआ। निरंतर परिश्रम घमंड पर भारी पड़ता है।" },
+    { title: "शेर और चूहा", text: "एक बार एक शेर सो रहा था, तभी एक चूहा भूल से उसके ऊपर से दौड़ गया। शेर जाग गया और क्रोध में चूहे को पकड़ लिया। चूहे ने क्षमा माँगते हुए कहा कि किसी दिन वह भी शेर के काम आएगा। शेर हँस पड़ा पर उसने चूहे को छोड़ दिया। कुछ दिनों बाद शेर बहेलिये के जाल में फँस गया। उसी चूहे ने रस्सियाँ कुतरकर शेर को मुक्त कर दिया। छोटा सा उपकार भी कभी व्यर्थ नहीं जाता।" },
+    { title: "सच्चा लकड़हारा", text: "एक निर्धन लकड़हारे की कुल्हाड़ी नदी में गिर गई। वह किनारे बैठकर रोने लगा। नदी की देवी प्रकट हुईं और चाँदी की कुल्हाड़ी लाकर पूछा कि क्या यह उसकी है। लकड़हारे ने सच बोलकर मना कर दिया। फिर देवी सोने की कुल्हाड़ी लाईं, पर उसने फिर मना कर दिया। अंत में देवी उसकी अपनी लोहे की कुल्हाड़ी लाईं, और लकड़हारे ने प्रसन्नता से उसे पहचान लिया। उसकी सच्चाई से प्रसन्न होकर देवी ने उसे तीनों कुल्हाड़ियाँ भेंट में दीं।" },
+    { title: "तेनालीराम की चतुराई", text: "एक बार राजा ने सभा में एक रेखा खींचकर पूछा कि इसे बिना छुए छोटा कैसे किया जाए। सभी मंत्री सोच में पड़ गए। तेनालीराम आगे आए और उसी के पास एक और बड़ी रेखा खींच दी। अब पहली रेखा अपने आप छोटी दिखने लगी, बिना छुए। राजा तेनालीराम की चतुराई से बहुत प्रसन्न हुए।" },
+    { title: "चालाक सियार", text: "जंगल में एक बूढ़ा शेर भोजन जुटाने में असमर्थ हो गया था। एक चालाक सियार उसका सेवक बन गया और बदले में बचा हुआ मांस खाता था। एक दिन सियार ने एक ऊँट को जंगल में फुसलाकर बुलाया। शेर ने ऊँट को मारकर सबके लिए भोजन बाँटा, पर सियार को धोखे से कुछ नहीं मिला। सियार ने सीखा कि चालाकी से पहले न्याय की परख आवश्यक है।" },
+    { title: "एकता में बल", text: "एक किसान के चार बेटे आपस में सदा झगड़ते रहते थे। किसान ने उन्हें लकड़ियों का एक गट्ठर दिया और तोड़ने को कहा। कोई भी अकेले पूरा गट्ठर नहीं तोड़ पाया। फिर किसान ने गट्ठर खोलकर एक-एक लकड़ी दी, जिसे हर बेटे ने आसानी से तोड़ दिया। किसान ने समझाया कि एकता में ही शक्ति है, और बिखरे रहने पर वे भी उतने ही दुर्बल हैं।" },
+    { title: "घमंडी हाथी", text: "जंगल का सबसे बड़ा हाथी अपनी शक्ति पर बहुत घमंड करता था और छोटे जानवरों को तुच्छ समझता था। एक दिन वह दलदल में फँस गया और चाहकर भी बाहर नहीं निकल पाया। तभी चींटियों के एक झुंड ने मिलकर उसके पैरों के नीचे मिट्टी भर दी और धीरे-धीरे उसे बाहर निकाल लिया। हाथी को समझ आया कि शक्ति चाहे जितनी भी हो, छोटों का सम्मान करना चाहिए।" },
+    { title: "परिश्रमी किसान", text: "एक किसान अपने खेत में बहुत परिश्रम करता था, जबकि उसके पड़ोसी आलसी थे और उसकी हँसी उड़ाते थे। सूखे के वर्ष में सभी की फसलें सूख गईं, पर किसान ने पहले से गहरे कुएँ खुदवाए थे इसलिए उसकी फसल बच गई। उस वर्ष उसने पूरे गाँव को अनाज बाँटा। परिश्रम और दूरदर्शिता कभी व्यर्थ नहीं जाती।" }
+  ];
+
+  let storyOrder = STORIES.map((_,i)=>i);
+  let storyPtr = 0;
+
+  function shuffleArray(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]] = [arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  const ppDev = document.getElementById('pp-dev');
+  const ppBrahmi = document.getElementById('pp-brahmi');
+  const storyTitleEl = document.getElementById('story-title');
+  const storyCountEl = document.getElementById('story-count');
+
+  function renderAligned(text){
+    const tokens = text.match(/\S+|\s+/g) || [];
+    let wordIdx = 0;
+    let devHtml = '', brahHtml = '';
+    tokens.forEach(tok=>{
+      if(/^\s+$/.test(tok)){
+        const esc = escapeHtml(tok);
+        devHtml += esc; brahHtml += esc;
+      } else {
+        const brah = devanagariToBrahmi(tok);
+        devHtml += '<span class="word" data-idx="'+wordIdx+'" tabindex="0">'+escapeHtml(tok)+'</span>';
+        brahHtml += '<span class="word" data-idx="'+wordIdx+'" tabindex="0">'+escapeHtml(brah)+'</span>';
+        wordIdx++;
+      }
+    });
+    ppDev.innerHTML = devHtml;
+    ppBrahmi.innerHTML = brahHtml;
+    wireWordClicks();
+  }
+
+  function wireWordClicks(){
+    const all = document.querySelectorAll('#pp-dev .word, #pp-brahmi .word');
+    all.forEach(el=>{
+      el.addEventListener('click', ()=> highlightIdx(el.dataset.idx));
+      el.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); highlightIdx(el.dataset.idx);} });
+    });
+  }
+  function highlightIdx(idx){
+    document.querySelectorAll('#pp-dev .word, #pp-brahmi .word').forEach(el=>{
+      el.classList.toggle('active', el.dataset.idx === idx);
+    });
+  }
+
+  function loadStory(){
+    const story = STORIES[storyOrder[storyPtr]];
+    storyTitleEl.textContent = story.title;
+    storyCountEl.textContent = (storyPtr+1) + ' / ' + STORIES.length;
+    renderAligned(story.text);
+  }
+
+  // live update: plain-text brahmi mirror while typing, upgrade to word-spans on pause/blur
+  let debounceTimer = null;
+  ppDev.addEventListener('input', ()=>{
+    const text = ppDev.innerText.replace(/\n+/g,' ');
+    ppBrahmi.textContent = devanagariToBrahmi(text);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(()=>{ renderAligned(text); placeCaretAtEnd(ppDev); }, 800);
+  });
+  ppDev.addEventListener('blur', ()=>{
+    const text = ppDev.innerText.replace(/\n+/g,' ');
+    renderAligned(text);
+  });
+  function placeCaretAtEnd(el){
+    el.focus();
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  document.getElementById('shuffle-btn').addEventListener('click', ()=>{
+    storyPtr++;
+    if(storyPtr >= storyOrder.length){
+      shuffleArray(storyOrder);
+      storyPtr = 0;
+    }
+    loadStory();
+  });
+
+  loadStory();
+
+})();
+</script>
+</body>
+</html>
