@@ -19,7 +19,7 @@
 <meta property="og:description" content="Convert Devanagari to Brahmi script in real time, type on an on-screen Brahmi keyboard, and practice reading India's oldest script through classic Hindi tales.">
 <meta property="og:url" content="https://prateek.is-a.dev/Brahmi">
 <meta property="og:site_name" content="Brāhmī — Devanagari to Brahmi Tool">
-<meta property="og:image" content="https://prateek.is-a.dev/Brahmi/background.jpg">
+<meta property="og:image" content="https://prateek.is-a.dev/Brahmi/bg.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Brahmi Script Converter — Devanagari ⇄ Brahmi">
 <meta name="twitter:description" content="Convert Devanagari to Brahmi script instantly, type on a Brahmi keyboard, and learn the script of Ashoka's edicts.">
-<meta name="twitter:image" content="https://prateek.is-a.dev/Brahmi/background.jpg">
+<meta name="twitter:image" content="https://prateek.is-a.dev/Brahmi/bg.png">
 
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon180x180.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./favicon180x180.png">
@@ -333,6 +333,9 @@
     border-radius:16px;
     padding:12px 10px;
     box-shadow:var(--shadow-sm);
+    touch-action: manipulation; 
+    user-select: none; 
+    -webkit-user-select: none; 
   }
   .kb-group{margin-bottom:8px;}
   .kb-group:last-child{margin-bottom:0;}
@@ -347,6 +350,9 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
     box-shadow:0 2px 0 rgba(36,28,21,.18);
     transition:transform .08s ease, background .15s;
+    touch-action: manipulation; 
+    user-select: none; 
+    -webkit-user-select: none; 
   }
   .kb-key .glyph{font-family:var(--font-brahmi); font-size:19px; line-height:1;}
   .kb-key .roman{font-family:var(--font-dev); font-size:10px; color:#5a4f3f;}
@@ -426,6 +432,93 @@
     .about-grid{grid-template-columns:1fr;}
   }
 
+  /* ---------- RESOURCES TAB ---------- */
+  .resource-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  .resource-card{
+    padding:20px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .resource-card__head{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+  }
+  .resource-card__title{
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:.02em;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .resource-card__file{
+    display:block;
+    font-family:var(--font-body);
+    font-style:italic;
+    font-size:12px;
+    color:#8a7c62;
+    margin-top:3px;
+  }
+  .resource-card__desc{
+    font-size:14px;
+    color:#4a4030;
+    flex:1 1 auto;
+    margin:0;
+  }
+  .download-btn{
+    align-self:flex-start;
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--stone); color:var(--cream); border:1px solid var(--gold);
+    padding:9px 16px; border-radius:20px;
+    font-family:var(--font-display); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    text-decoration:none;
+    transition:background .15s;
+  }
+  .download-btn:hover{background:var(--oxide); color:var(--cream);}
+  .download-btn svg{width:14px;height:14px; stroke:currentColor; fill:none; flex:0 0 auto;}
+
+  .resource-divider{
+    display:flex; align-items:center; gap:14px;
+    margin:38px 0 22px;
+  }
+  .resource-divider span{
+    font-family:var(--font-display); font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--oxide-dark); white-space:nowrap;
+  }
+  .resource-divider::before, .resource-divider::after{
+    content:''; flex:1 1 auto; height:1px; background:var(--line);
+  }
+
+  .external-list{
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .external-link{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:16px 20px;
+    text-decoration:none;
+  }
+  .external-link__text{display:flex; flex-direction:column; gap:2px;}
+  .external-link__name{font-family:var(--font-display); font-size:14px; color:var(--ink); letter-spacing:.01em;}
+  .external-link__desc{font-size:13px; color:#8a7c62;}
+  .external-link__go{
+    flex:0 0 auto;
+    width:32px; height:32px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); color:var(--oxide-dark);
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .external-link__go svg{width:15px;height:15px;}
+  .external-link:hover .external-link__go{background:var(--oxide); color:var(--cream); border-color:var(--oxide);}
+
+  .resource-note{font-size:13px; color:#8a7c62; font-style:italic; margin-top:14px; text-align:center;}
+
+  @media (max-width:760px){
+    .resource-grid{grid-template-columns:1fr;}
+  }
+
   footer{
     text-align:center; padding:30px 20px 46px; color:#8a7c62; font-size:13px;
     font-family:var(--font-display); letter-spacing:.04em;
@@ -498,6 +591,10 @@
     <button class="tab-btn" data-tab="practice" role="tab" aria-selected="false">
       <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H14v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H14v16h4.5c.8 0 1.5-.7 1.5-1.5v-13Z"/></svg>
       Practice
+    </button>
+    <button class="tab-btn" data-tab="resources" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Resources
     </button>
     <button class="tab-btn" data-tab="about" role="tab" aria-selected="false">
       <svg viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1" stroke-linecap="round"/></svg>
@@ -579,7 +676,7 @@
           <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <textarea class="kb-textarea" id="kb-textarea" placeholder="नीचे कीबोर्ड से टाइप करें…" style="font-family:var(--font-brahmi)"></textarea>
+      <textarea class="kb-textarea" id="kb-textarea" inputmode="none" placeholder="नीचे कीबोर्ड से टाइप करें…" style="font-family:var(--font-brahmi)"></textarea>
       <div class="kb-subhead">
         <span>देवनागरी · live preview</span>
         <button class="copy-btn" data-copy="kb-preview-label" type="button" title="Copy" aria-label="Copy Devanagari text">
@@ -631,6 +728,114 @@
         <div class="pp-brahmi" id="pp-brahmi"></div>
       </div>
     </div>
+  </section>
+
+  <!-- ============ RESOURCES TAB ============ -->
+  <section class="panel" id="panel-resources">
+    <div class="section-head">
+      <div class="kicker">Study Material</div>
+      <h2>संसाधन</h2>
+      <p>Printable charts and references to study offline — every file lives in this project's GitHub repository, free to download.</p>
+    </div>
+
+    <div class="resource-grid">
+      <div class="card resource-card">
+        <div class="resource-card__head">
+          <div>
+            <div class="resource-card__title">Character Reference</div>
+            <span class="resource-card__file">characters.pdf</span>
+          </div>
+        </div>
+        <p class="resource-card__desc">A comprehensive chart of every Brahmi character, showing how each one looks combined with vowel signs (mātrās) and joined to other consonants — a single-sheet lookup for reading conjuncts.</p>
+        <a class="download-btn" href="./resources/characters.pdf" download target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-card__head">
+          <div>
+            <div class="resource-card__title">Brahmi Bārahkhādī</div>
+            <span class="resource-card__file">barahkhadi.pdf</span>
+          </div>
+        </div>
+        <p class="resource-card__desc">The traditional twelve-vowel drill table (बारहखड़ी), rebuilt in Brahmi — every consonant paired with each vowel sign in order, the classic method for learning to read and write an abugida akshara by akshara.</p>
+        <a class="download-btn" href="./resources/barahkhadi.pdf" download target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-card__head">
+          <div>
+            <div class="resource-card__title">Brahmi Chinnha (Symbols)</div>
+            <span class="resource-card__file">Chinnha.pdf</span>
+          </div>
+        </div>
+        <p class="resource-card__desc">A closer look at every Brahmi chinnha (चिन्ह) — signs, marks and diacritics — paired with a detailed write-up on the script's structure, phonetic logic and history.</p>
+        <a class="download-btn" href="./resources/Chinnha.pdf" download target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-card__head">
+          <div>
+            <div class="resource-card__title">Brahmi: A History</div>
+            <span class="resource-card__file">BrahmiPPT.pdf</span>
+          </div>
+        </div>
+        <p class="resource-card__desc">A slide deck tracing Brahmi's story from its Mauryan-era origins through Ashoka's edicts to its slow branching into Devanagari and the other scripts of South and Southeast Asia.</p>
+        <a class="download-btn" href="./resources/BrahmiPPT.pdf" download target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-card__head">
+          <div>
+            <div class="resource-card__title">Brahmi Unicode Reference</div>
+            <span class="resource-card__file">Brahmi UTF.pdf</span>
+          </div>
+        </div>
+        <p class="resource-card__desc">A quick-reference sheet mapping every Brahmi character to its exact Unicode code point (U+11000 block) — handy for developers, typesetters, or anyone entering Brahmi text by hand.</p>
+        <a class="download-btn" href="./resources/Brahmi%20UTF.pdf" download target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="resource-divider"><span>Further Reading</span></div>
+
+    <div class="external-list">
+      <a class="card external-link" href="https://www.unicode.org/charts/PDF/U11000.pdf" target="_blank" rel="noopener">
+        <div class="external-link__text">
+          <span class="external-link__name">Unicode Official Code Chart</span>
+          <span class="external-link__desc">The Unicode Consortium's own U+11000–U+1107F chart, with official character names for every code point</span>
+        </div>
+        <span class="external-link__go"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="card external-link" href="https://en.wikipedia.org/wiki/Brahmi_script" target="_blank" rel="noopener">
+        <div class="external-link__text">
+          <span class="external-link__name">Brahmi Script — Wikipedia</span>
+          <span class="external-link__desc">A thorough overview of Brahmi's origins, decipherment, regional varieties and its family of descendant scripts</span>
+        </div>
+        <span class="external-link__go"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="card external-link" href="https://www.omniglot.com/writing/brahmi.htm" target="_blank" rel="noopener">
+        <div class="external-link__text">
+          <span class="external-link__name">Brāhmī Alphabet — Omniglot</span>
+          <span class="external-link__desc">A guide to Brahmi's letterforms and pronunciation, with a sample text from an Ashokan edict</span>
+        </div>
+        <span class="external-link__go"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+    <p class="resource-note">External links open on their own sites and aren't hosted as part of this project.</p>
   </section>
 
   <!-- ============ ABOUT TAB ============ -->
@@ -766,6 +971,7 @@
     translit: document.getElementById('panel-translit'),
     keyboard: document.getElementById('panel-keyboard'),
     practice: document.getElementById('panel-practice'),
+    resources: document.getElementById('panel-resources'),
     about: document.getElementById('panel-about'),
   };
   tabBtns.forEach(btn=>{
@@ -786,26 +992,43 @@
   const OTHER_SIGNS = ['ं','ः','ँ','्'];
   const NUMERALS = ['०','१','२','३','४','५','६','७','८','९'];
 
-  // Every insertion always happens at the END of the current text — never
-  // at a stale/mid cursor position — so keys can never land in the wrong
-  // spot when the textarea isn't focused.
+  // Inserts at the current cursor position (or replaces a selection) rather
+  // than always at the end — the textarea keeps its last selection even
+  // after a keyboard button click steals focus, so typed words land where
+  // the cursor actually was.
   function appendText(el, text){
-    el.value = el.value + text;
-    el.selectionStart = el.selectionEnd = el.value.length;
+    const start = (el.selectionStart != null) ? el.selectionStart : el.value.length;
+    const end = (el.selectionEnd != null) ? el.selectionEnd : el.value.length;
+    el.value = el.value.slice(0, start) + text + el.value.slice(end);
+    const pos = start + text.length;
+    el.selectionStart = el.selectionEnd = pos;
     el.dispatchEvent(new Event('input'));
   }
-  function backspaceOne(el){
-    if(el.value.length === 0) return;
-    el.value = el.value.slice(0, -1);
-    el.selectionStart = el.selectionEnd = el.value.length;
-    el.dispatchEvent(new Event('input'));
+function backspaceOne(el){
+  if(el.value.length === 0) return;
+  const start = (el.selectionStart != null) ? el.selectionStart : el.value.length;
+  const end = (el.selectionEnd != null) ? el.selectionEnd : el.value.length;
+
+  if(start !== end){
+    el.value = el.value.slice(0, start) + el.value.slice(end);
+    el.selectionStart = el.selectionEnd = start;
+  } else if(start > 0){
+    const before = el.value.slice(0, start);
+    const chars = Array.from(before);      // splits by code point, not code unit
+    chars.pop();                            // drop the last full character
+    const newBefore = chars.join('');
+    el.value = newBefore + el.value.slice(start);
+    el.selectionStart = el.selectionEnd = newBefore.length;
   }
+  el.dispatchEvent(new Event('input'));
+}
 
   function makeKey(brahmiGlyph, devCaption, wide){
     const key = document.createElement('button');
     key.type = 'button';
     key.className = 'kb-key' + (wide ? ' wide' : '');
     key.innerHTML = '<span class="glyph">'+escapeHtml(brahmiGlyph)+'</span><span class="roman">'+escapeHtml(devCaption)+'</span>';
+    preventFocusSteal(key);   
     return key;
   }
 
@@ -934,6 +1157,7 @@
       btn.type = 'button';
       btn.className = b.cls;
       btn.textContent = b.label;
+      preventFocusSteal(btn);   
       btn.addEventListener('click', ()=>{
         b.act();
         if(handle) handle.reset();
@@ -970,6 +1194,13 @@
   kbTextarea.addEventListener('input', updateKbPreview);
   updateKbPreview();
 
+
+// Stops the button from ever taking focus, so the textarea's
+// selectionStart/selectionEnd survive the tap on iOS/Android.
+function preventFocusSteal(btn){
+  btn.addEventListener('pointerdown', (e) => e.preventDefault());
+}
+  
   /* ============================================================
      4. TRANSLITERATION TAB
      ============================================================ */
@@ -990,6 +1221,15 @@
   function runConversion(){
     const converted = (dir === 'd2b') ? devanagariToBrahmi(inputLeft.value) : brahmiToDevanagari(inputLeft.value);
     outputRight.textContent = converted;
+
+    inputLeft.scrollTo({
+      top: inputLeft.scrollHeight,
+      behavior: "smooth"
+    });
+    outputRight.scrollTo({
+      top: outputRight.scrollHeight,
+      behavior: "smooth"
+    });
   }
   inputLeft.addEventListener('input', runConversion);
 
